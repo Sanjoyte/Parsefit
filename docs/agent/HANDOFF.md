@@ -1,19 +1,20 @@
 # Live agent handoff
 
-**Last verification date:** 11 October 2026 (Asia/Dhaka). **State:** Documentation and planning setup only; root README now exists, but no application exists.
+**Last verification date:** 12 October 2026 (Asia/Dhaka). **State:** Documentation and planning setup only; root README now exists, but no application exists.
 
 | Field | Current value |
 | --- | --- |
-| Current active part | README-DOC, owner-requested project README; not application part 0A. |
+| Current active part | COORD-DOCS final review, resumed on owner instruction; prior README-DOC changes preserved. No application part active. |
 | Current phase | awaiting setup |
-| Owner/agent | Codex `/root` is the sole editor during this task. Ownership is released when the final report is delivered. No other agent may start editing without a new instruction and fresh handoff/worktree read. |
+| Owner/agent | Unassigned: Codex `/root` completed the documentation review and released editing ownership on 12 October 2026. Review agents changed no files. A next editor requires an owner instruction, fresh handoff/worktree read and recorded ownership before writes. |
 | Approved implementation plan | None. [Plan directory/index](plans/README.md) contains conventions only. No 0A or other part plan is approved. |
 | Proposed implementation roadmap | [Root task.md](../../task.md): 82 future parts, all Not Started. Roadmap is not approval. |
 | Next implementation part | 0A after owner S0 manual setup and separate PLAN → APPROVAL → SAVE → IMPLEMENT instructions. |
 
 ## Completed documentation work
 
-- README-DOC: created a root project orientation that identifies the repository as planning-only, summarizes intended scope and approved architecture, links existing authorities, and does not invent setup commands. Updated STRUCTURE's creation record. No 0A implementation or status change.
+- COORD-DOCS final review: clarified exact paths, package manifests/early test runners and API prerequisite; added warm-up/working set preservation and last comparable actual-workout context; retained all 82 Not Started parts.
+- README-DOC (prior work, preserved): created a root project orientation that identifies the repository as planning-only, summarizes intended scope and approved architecture, links existing authorities, and does not invent setup commands. Updated STRUCTURE's creation record. No 0A implementation or status change.
 - Read the 24-page PDF and existing analysis/architecture/structure. Read-only source reviewers checked product order, exact paths, R/D/T/O mappings and technical invariants; only `/root` wrote repository files.
 - Created root task.md, canonical AGENTS.md, optional CLAUDE.md bridge, HANDOFF/MEMORY and saved-plan index. No implementation plan, feature code or application scaffold created.
 - Updated STRUCTURE creation records for those six documents and clarified historical ARCH-DOCS limits; no approved architecture or ANALYSIS decisions changed.
@@ -24,17 +25,17 @@
 | File | Change |
 | --- | --- |
 | [README.md](../../README.md) | Created project overview, current status, planned architecture, source links and next setup step. |
-| [task.md](../../task.md) | Created dependency-aware roadmap, per-part 18 fields/model recommendations, status/evidence rules, gates and mandatory workflow. |
+| [task.md](../../task.md) | Created dependency-aware roadmap; final review clarified exact paths/current document existence, early runner/API dependencies and workout/history semantics; 82 parts remain Not Started. |
 | [AGENTS.md](../../AGENTS.md) | Created canonical instructions, architecture/invariants, single editor, owner approval and user-only Git rules. |
 | [CLAUDE.md](../../CLAUDE.md) | Created lightweight canonical-source bridge. |
 | [HANDOFF.md](HANDOFF.md) | Created this live state/evidence record. |
-| [MEMORY.md](MEMORY.md) | Created durable source-backed decisions/pitfalls, explicitly no runtime discoveries. |
+| [MEMORY.md](MEMORY.md) | Created durable source-backed constraints; final review added set-kind/comparable-history invariants, explicitly no runtime discoveries. |
 | [plans/README.md](plans/README.md) | Created persistent saved-plan directory and conventions; no proposed/approved part plan. |
 | [STRUCTURE.md](../STRUCTURE.md) | Modified document-existence/status registry only, including README-DOC creation. |
 
 ## Commands run and actual results
 
-All repository reads/checks ran from `/home/sanjoy-rozario/Parsefit` unless a command used an absolute path. No second terminal/application service was needed for this documentation task. Temporary extraction/generation/validation artifacts are outside the repository under `/tmp`.
+The prior documentation command evidence below is preserved from COORD-DOCS/README-DOC. This continuation records its own final checks separately; it does not claim to have created the prior README or repeated every historical command. All repository reads/checks ran from `/home/sanjoy-rozario/Parsefit` unless a command used an absolute path. No second terminal/application service was needed for this documentation task. Temporary extraction/generation/validation artifacts are outside the repository under `/tmp`.
 
 | Actual command/action | Observed result |
 | --- | --- |
@@ -53,13 +54,17 @@ All repository reads/checks ran from `/home/sanjoy-rozario/Parsefit` unless a co
 | `python3 /tmp/build_parsefit_plan.py` | Exit 0; generated task.md with 82 proposed parts, 18 fields each, initially 2,115 lines. This is document generation, not application code. |
 | `apply_patch` documentation writes | Succeeded; six requested documentation files created and STRUCTURE status registry updated. |
 | Official OpenAI documentation search/open | Model-selection and IDE pages reviewed for selection guidance; availability is not asserted from API model documentation. VS Code picker controls actual options. |
-| COORD-DOCS final documentation validation | Result was pending when that handoff entry was created; this README-DOC task does not claim or repeat that earlier validation. |
+| `python3 /tmp/parsefit-doc-check.py` on 12 October 2026 | Exit 0, PASS: 82 cards × 18 ordered fields; 82 matching Not Started status rows; 137 resolving local links/anchors; acyclic known dependencies; all R01-R74/D1-D12/T01-T34 mapped; protected PDF/ANALYSIS/ARCHITECTURE hashes unchanged; no scaffold/setup/config/part-plan artifacts. Earlier D2 trace omission was corrected before this passing run. This temporary checker is outside the repository and is not an application test script. |
+| `python3 -` exact-path brace check on 12 October 2026 | Exit 0, PASS: file extensions no longer acquire directory slashes; corrected 0D/23/23A/23B/42 path groups. |
+| Resumed `cat`/`sed`/`git status --short`/`git log -3 --oneline` reads | Confirmed committed prior README/coordination work and preserved it; only task.md, MEMORY.md and HANDOFF.md modified by the continuation. An inventory `ls` exited 2 because earlier temporary checker scripts were no longer present; a new checker was recreated under /tmp. No application blocker. |
+| `git diff --check` on 12 October 2026 | Exit 0; no whitespace errors. Read-only Git inspection; no staging, commit, push or history mutation. |
+| Final read-only architecture/product/coordination review | All required workflow/content present; fixed exact paths, early test-runner dependency gap, API prerequisite, warm-up/working classification, comparable-history ownership and source references. No remaining substantive review issue. |
 
 **Application verification:** Not run. No Node/pnpm application manifests, test scripts, installed application dependencies, browser app, Android build, database service, deployment or production environment exists yet. No runtime test is claimed passing.
 
 ## User decisions and durable context
 
-- Current README-DOC request authorizes a project README. It does not authorize scaffolding, dependency installation, feature code, real secrets or application-part implementation. Setup/test-command documentation comes in a later prompt.
+- Original COORD-DOCS request and latest “continue” authorize finishing the execution/continuity documentation review. Prior README-DOC changes are preserved. No scaffolding, dependency installation, feature code, real secrets or application-part implementation is authorized. Setup/test-command documentation comes in a later prompt.
 - ARCHITECTURE records approved Expo stack direction, O2 page-19 MVP/deferrals, O3 next-journal-day targets/explicit finish-skip sequence, and protected-store direction. Do not re-request those choices or silently edit ANALYSIS.
 - Website first; installed Android proof during foundation; guest with optional accounts/sync; Bangladesh-first food validation; English UI with Bangla-English examples; optional bounded MVP AI; quality over model-use minimization.
 - Owner reviews each concrete plan, separately approves it, has it saved without implementation, then instructs implementation. Owner performs commits/pushes manually. No implementation approval or Git mutation supplied by this task.
