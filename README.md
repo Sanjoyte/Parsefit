@@ -2,7 +2,7 @@
 
 Parsefit is a planned adult wellness app for food, workouts, sleep, and practical next steps. Its product goal is to make logging and planning useful through imperfect weeks: people can correct estimates, move sessions, record incomplete days honestly, and choose manageable actions without punitive streaks. The [product blueprint](docs/Adaptive_Health_App_Product_Blueprint.pdf) describes the intended experience.
 
-> **Current status (11 October 2026): documentation and planning only.** There is no application scaffold, installable app, API, database, test suite, or deployment in this repository yet. The capabilities below describe approved direction and planned work, not shipped features.
+> **Current status (12 October 2026): documentation and planning only.** There is no application scaffold, installable app, API, database, test suite, or deployment in this repository yet. The capabilities below describe approved direction and planned work, not shipped features.
 
 ## Intended first release
 
@@ -37,9 +37,12 @@ These paths are planned and do not exist yet. The [architecture](docs/ARCHITECTU
 | [Execution roadmap](task.md) | Dependencies, part status, acceptance, and required workflow |
 | [Agent instructions](AGENTS.md) | Rules for changes, approvals, privacy, verification, and Git actions |
 | [Live handoff](docs/agent/HANDOFF.md) | Current work state, evidence, and next action |
+| [Setup guide](docs/SETUP.md) | Owner machine and phased setup instructions |
+| [Environment guide](docs/ENV_GUIDE.md) | Public/private configuration and later variable registry |
+| [Test runbook](docs/test-command.md) | S0 checks, test expectations and future part placeholders |
 
 ## Getting started
 
-There are no runnable setup or test commands yet. The owner first completes the manual setup prerequisite **S0** described in [task.md](task.md#manual-setup-prerequisite-s0). After that, work proceeds one approved part at a time, starting with a plan for **0A — Repository and compatible toolchain**. That part will choose and verify the toolchain, create the workspace, and add actual commands. Do not infer installation steps or working scripts from the planned layout.
+The owner first completes the manual setup prerequisite **S0** using the [setup guide](docs/SETUP.md). Read-only machine checks can run now; no application scripts exist yet. After S0, work proceeds one approved part at a time, starting with a plan for **0A — Repository and compatible toolchain**. That part will choose and verify the toolchain, create the workspace, and add actual project commands. Do not infer working scripts from the planned layout.
 
 Development uses synthetic data until the applicable privacy, health-policy, external-processing, and release gates are approved and verified. Do not place credentials or private health data in the repository.

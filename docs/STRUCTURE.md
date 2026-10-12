@@ -4,9 +4,11 @@
 
 **Date:** 11 October 2026
 
-**Status:** Repository plan with current creation records. ARCH-DOCS created the two architecture documents; COORD-DOCS created the execution/continuity documents listed below; the owner-requested README-DOC task created root README.md. Application, tooling, tests and infrastructure remain planned.
+**Status:** Repository plan with current creation records. ARCH-DOCS created the two architecture documents; COORD-DOCS created the execution/continuity documents listed below; README-DOC created root README.md; SETUP-DOC created the three manual guides. Application, tooling, tests and infrastructure remain planned.
 
 **Creation-record update:** 11 October 2026, README-DOC. This update records document existence only; approved architecture, ownership and application paths are unchanged.
+
+**Creation-record update:** 12 October 2026, SETUP-DOC. This update records three guide files only; candidate versions and proposed variable names are not pinned application compatibility or deployed configuration.
 
 **Behavioral authority:** [ARCHITECTURE.md](ARCHITECTURE.md)
 
@@ -23,6 +25,7 @@ This is a small pnpm/strict-TypeScript monorepo plan: one universal Expo applica
 | CREATED IN PART ARCH-DOCS | Created by this approved documentation task: only ARCHITECTURE.md and STRUCTURE.md. |
 | CREATED IN PART COORD-DOCS | Created by the later owner-requested execution/agent-continuity documentation task; no application implementation implied. |
 | CREATED IN PART README-DOC | Created by the owner-requested root README task; no application implementation implied. |
+| CREATED IN PART SETUP-DOC | Created by the owner-requested setup-documentation task; no application implementation or environment provisioned. |
 
 Milestones M0-M6 retain the analysis's meanings: feasibility, manual journals, workout/schedule, targets/aggregates, accounts/sync/privacy, vetted intelligence, website pilot. Later means separately approved post-MVP work. Files used by a prototype may begin at M0 with synthetic behavior and acquire full implementation later; that does not mean their production gate has passed.
 
@@ -83,9 +86,9 @@ Parsefit/                                      [EXISTING] Repository root
     ├── ANALYSIS.md                            [EXISTING] R01-R74, D1-D12, T01-T34, O1-O9 and original scope analysis
     ├── ARCHITECTURE.md                        [CREATED IN PART ARCH-DOCS] Technical behavior, invariants and gates
     ├── STRUCTURE.md                           [CREATED IN PART ARCH-DOCS] This annotated source plan
-    ├── SETUP.md                               [PLANNED] Owner toolchain/local/staging setup and verified compatible versions
-    ├── ENV_GUIDE.md                           [PLANNED] Per-target variable ownership, secret/public distinction and rotation
-    ├── test-command.md                        [PLANNED] Actual runnable commands, prerequisites and manual checks by part
+    ├── SETUP.md                               [CREATED IN PART SETUP-DOC] Owner phases, machine checks and candidate compatibility; 0A pins tested versions
+    ├── ENV_GUIDE.md                           [CREATED IN PART SETUP-DOC] Proposed variable registry, public/private ownership and rotation
+    ├── test-command.md                        [CREATED IN PART SETUP-DOC] S0 checks, test layers and 82 future-part placeholders; parts add actual scripts/results
     └── agent/                                [CREATED IN PART COORD-DOCS] Agent continuity; singular directory name
         ├── HANDOFF.md                         [CREATED IN PART COORD-DOCS] Live state, changed files, actual verification, blockers and next step
         ├── MEMORY.md                          [CREATED IN PART COORD-DOCS] Durable source-backed constraints; no runtime discoveries implied
@@ -93,7 +96,7 @@ Parsefit/                                      [EXISTING] Repository root
             └── README.md                     [CREATED IN PART COORD-DOCS] Naming, approval and required plan-content convention
 ```
 
-The ten required task/documentation locations are exactly `task.md`, `docs/ANALYSIS.md`, `docs/ARCHITECTURE.md`, `docs/STRUCTURE.md`, `docs/SETUP.md`, `docs/ENV_GUIDE.md`, `docs/test-command.md`, `docs/agent/HANDOFF.md`, `docs/agent/MEMORY.md`, and `docs/agent/plans/`. ARCH-DOCS created only its two labeled documents. COORD-DOCS subsequently created the six files labeled above, including the lightweight root CLAUDE.md bridge and plans index. SETUP.md, ENV_GUIDE.md and test-command.md remain absent for the later setup prompt. References to planned documents describe future destinations; do not create empty documents just to satisfy links.
+The ten required task/documentation locations are exactly `task.md`, `docs/ANALYSIS.md`, `docs/ARCHITECTURE.md`, `docs/STRUCTURE.md`, `docs/SETUP.md`, `docs/ENV_GUIDE.md`, `docs/test-command.md`, `docs/agent/HANDOFF.md`, `docs/agent/MEMORY.md`, and `docs/agent/plans/`. ARCH-DOCS created only its two labeled documents. COORD-DOCS subsequently created the six files labeled above, including the lightweight root CLAUDE.md bridge and plans index. SETUP-DOC created the three manual guides. Application paths remain planned; guide links do not assert runnable project scripts.
 
 The root has no combined client/server environment file. Put publishable client examples and server-secret examples in their respective applications, without real values. Deployment definitions reference environment-owned secrets. The lockfile and toolchain versions are chosen at M0; no exact dependency compatibility is claimed here. Use pnpm scripts rather than adding Nx/Turborepo for this repository size.
 
@@ -482,7 +485,7 @@ Do not add empty generic plugin frameworks, a second frontend, speculative vecto
 
 Future agents read root `task.md`, `docs/agent/HANDOFF.md`, relevant `docs/agent/MEMORY.md`, this structure, and ARCHITECTURE.md before implementing a part; if a planned continuity file does not yet exist, do not pretend it contains instructions. Use ANALYSIS.md and PDF page references to resolve product intent. Current owner decisions supplement the analysis's original pending statuses as recorded in ARCHITECTURE.md; do not silently overwrite approved decisions.
 
-`docs/SETUP.md` records tested installation/environment steps only after the owner-authorized setup stage. `docs/ENV_GUIDE.md` distinguishes public build-time variables from private server/runtime/signing secrets. `docs/test-command.md` records commands that actually exist, prerequisites and manual platform evidence; do not claim proposed scripts are runnable now. HANDOFF records what changed and what passed/failed; MEMORY records durable decisions and links rather than copying sensitive data or inventing approval. No third continuity document is created in this part.
+`docs/SETUP.md` records observed machine versions and manual future steps; 0A must record tested package compatibility. `docs/ENV_GUIDE.md` distinguishes public build-time variables from private server/runtime/signing secrets and proposes names for owning parts to adopt. `docs/test-command.md` currently records only read-only S0 checks and future placeholders; each implementation part adds actual scripts/results. HANDOFF records what changed and what passed/failed; MEMORY records durable decisions and links rather than copying sensitive data or inventing approval. No third continuity document was created by COORD-DOCS.
 
 When a future file is created, update its status to `CREATED IN PART <actual-part-id>` and record the milestone evidence. When it merely moves from planned to implemented, do not relabel its historic creation as ARCH-DOCS. Keep structure responsibilities synchronized with approved architecture changes; package/adapter moves must not weaken dependency rules.
 

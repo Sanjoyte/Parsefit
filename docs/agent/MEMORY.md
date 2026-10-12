@@ -28,6 +28,7 @@ Seeded 11 October 2026 (Asia/Dhaka), part COORD-DOCS. These are source-backed co
 
 ## Testing and intelligence conventions
 
+- [SETUP](../SETUP.md), [ENV_GUIDE](../ENV_GUIDE.md) and [test-command](../test-command.md) were created by SETUP-DOC on 12 October 2026. Version matrix entries are candidates; 0A pins/tests compatibility. Environment names are a proposed registry for owning parts to adopt consistently. The test guide indexes 82 placeholders and only read-only S0 checks are currently runnable; no application result exists.
 - [ARCHITECTURE §12](../ARCHITECTURE.md#12-testing-architecture) preserves T01-T34. Vitest/fast-check and RN Jest suites have separate discovery. Real stores/DB/native builds are required for their contracts; mocked tests are insufficient portability evidence. Installed Android smoke begins at M0.
 - PDF p.19 order: shared data/date/local storage → manual logging in three modules → workout states → goals/bars → calendars/aggregates → constrained generation/summaries → Overall coaching. Expensive adaptation/ML/integrations are Later gates.
 - AI has no journal/policy write authority. Deterministic calculations supply numbers; source/draft/evidence versions guard late responses. Bangladesh-first examples require licensed provenance, raw/cooked/portion ambiguity, Bengali script and mixed Bangla-English fixtures. O5/O8 gates are not engineering guesses.
