@@ -2,7 +2,7 @@
 
 Parsefit is a planned adult wellness app for food, workouts, sleep, and practical next steps. Its product goal is to make logging and planning useful through imperfect weeks: people can correct estimates, move sessions, record incomplete days honestly, and choose manageable actions without punitive streaks. The [product blueprint](docs/Adaptive_Health_App_Product_Blueprint.pdf) describes the intended experience.
 
-> **Current status (12 October 2026): documentation and planning only.** There is no application scaffold, installable app, API, database, test suite, or deployment in this repository yet. The capabilities below describe approved direction and planned work, not shipped features.
+> **Current status (13 October 2026): documentation and planning only.** The [pre-implementation audit](docs/agent/pre-implementation-audit.md) is complete. Documentation is ready for manual environment setup. There is no application scaffold, installable app, API, database, test suite, or deployment in this repository yet. The capabilities below describe approved direction and planned work, not shipped features.
 
 ## Intended first release
 
@@ -40,6 +40,7 @@ These paths are planned and do not exist yet. The [architecture](docs/ARCHITECTU
 | [Setup guide](docs/SETUP.md) | Owner machine and phased setup instructions |
 | [Environment guide](docs/ENV_GUIDE.md) | Public/private configuration and later variable registry |
 | [Test runbook](docs/test-command.md) | S0 checks, test expectations and future part placeholders |
+| [Pre-implementation audit](docs/agent/pre-implementation-audit.md) | Findings, requirement traceability, portability risks and setup readiness |
 
 ## Getting started
 

@@ -1,92 +1,65 @@
 # Live agent handoff
 
-**Last verification date:** 12 October 2026 (Asia/Dhaka). **State:** SETUP-DOC guides now exist; documentation and planning only, no application exists.
+**Last verification date:** 13 October 2026 (Asia/Dhaka). **State:** AUDIT-DOCS complete. Documentation is ready for manual environment setup. Application implementation has not started.
 
 | Field | Current value |
 | --- | --- |
-| Current active part | SETUP-DOC completed on owner instruction; no application part active. |
+| Current active part | None. AUDIT-DOCS is Done; no application part active. |
 | Current phase | awaiting setup |
-| Owner/agent | Unassigned: Codex `/root` completed SETUP-DOC documentation edits and released editing ownership on 12 October 2026. A next editor requires owner instruction, fresh handoff/worktree read and recorded ownership. |
-| Approved implementation plan | None. [Plan directory/index](plans/README.md) contains conventions only. No 0A or other part plan is approved. |
-| Proposed implementation roadmap | [Root task.md](../../task.md): 82 future parts, all Not Started. Roadmap is not approval. |
-| Next implementation part | 0A after owner S0 manual setup and separate PLAN → APPROVAL → SAVE → IMPLEMENT instructions. |
+| Owner/agent | No active repository editor. Codex `/root` completed and released sole editing ownership. Read-only reviewers made no repository changes. Next editor must reread continuity files and inspect the worktree. |
+| Approved plan | [AUDIT-DOCS revision 1](plans/part-audit-docs-final-pre-implementation-audit.md), approved by the owner's `approved` reply on 13 October 2026; saved exactly with provenance. Its planning-time status is historical and remains unchanged. |
+| Execution authority | Owner explicitly instructed `Execute AUDIT-DOCS.` and subsequently `continue`. This authorized the documentation audit/corrections only. |
+| Application roadmap | [task.md](../../task.md): 82 future parts, all Not Started. No application-part plan is approved. |
+| Next action | Owner completes S0 checks/setup, then requests **PLAN 0A**. Approval → SAVE → explicit IMPLEMENT remain separate steps. |
 
-## Completed documentation work
+## Result and evidence
 
-- SETUP-DOC: created manual [SETUP](../SETUP.md), [ENV_GUIDE](../ENV_GUIDE.md) and [test-command](../test-command.md); verified current Ubuntu/tool presence read-only, consulted official version/install guidance, indexed all 82 future parts and kept application commands as placeholders. Updated README, task.md and STRUCTURE creation records. No owner installation, authentication, service startup, environment file, provider setup or deployment was performed.
-- COORD-DOCS final review: clarified exact paths, package manifests/early test runners and API prerequisite; added warm-up/working set preservation and last comparable actual-workout context; retained all 82 Not Started parts.
-- README-DOC (prior work, preserved): created a root project orientation that identifies the repository as planning-only, summarizes intended scope and approved architecture, links existing authorities, and does not invent setup commands. Updated STRUCTURE's creation record. No 0A implementation or status change.
-- Read the 24-page PDF and existing analysis/architecture/structure. Read-only source reviewers checked product order, exact paths, R/D/T/O mappings and technical invariants; only `/root` wrote repository files.
-- Created root task.md, canonical AGENTS.md, optional CLAUDE.md bridge, HANDOFF/MEMORY and saved-plan index. No implementation plan, feature code or application scaffold created.
-- Updated STRUCTURE creation records for those six documents and clarified historical ARCH-DOCS limits; no approved architecture or ANALYSIS decisions changed.
-- Omitted `.codex/`: root instruction discovery and saved-plan paths need no model/effort-pinning configuration.
+The [audit report](pre-implementation-audit.md) contains the eight requested sections, 143 capability rows covering all R01–R74 and T01–T34, platform risks with earliest proof points, failure/correction walkthroughs, review of all 82 task cards, setup command classification and dated official-source checks.
 
-## Files changed
+No remaining documentation blocker to S0 was found. Corrected browser first-use sequencing, package CLI directories, Compose env wiring ambiguity, pre-staging approval order, CNG/prebuild wording, development Android identity timing, staged Food/Sleep/export acceptance, re-enable/old-goal review, warm-up/comparable history and stale path/status statements. No graph edge, approved stack, policy threshold, O2/O3 disposition or application scope changed.
 
-| File | Change |
+All runtime, real-store, browser, installed Android, deployment, recovery and pilot results remain **Not run**. This documentation part's completion does not close those future acceptance gates. Partial read-only reviewers hit a usage limit; `/root` completed the remaining review and verification directly. No independent completed reviewer sign-off is claimed.
+
+## Changed files and preserved work
+
+The separate SAVE step had already modified this handoff and created the approved plan before execution. That exact plan is preserved. The combined unstaged documentation change set is:
+
+| File(s) | Actual change |
 | --- | --- |
-| [README.md](../../README.md) | Created project overview, current status, planned architecture, source links and next setup step. |
-| [task.md](../../task.md) | Created dependency-aware roadmap; final review clarified exact paths/current document existence, early runner/API dependencies and workout/history semantics; 82 parts remain Not Started. |
-| [AGENTS.md](../../AGENTS.md) | Created canonical instructions, architecture/invariants, single editor, owner approval and user-only Git rules. |
-| [CLAUDE.md](../../CLAUDE.md) | Created lightweight canonical-source bridge. |
-| [HANDOFF.md](HANDOFF.md) | Created this live state/evidence record. |
-| [MEMORY.md](MEMORY.md) | Created durable source-backed constraints; final review added set-kind/comparable-history invariants, explicitly no runtime discoveries. |
-| [plans/README.md](plans/README.md) | Created persistent saved-plan directory and conventions; no proposed/approved part plan. |
-| [STRUCTURE.md](../STRUCTURE.md) | Modified document-existence/status registry only, including README-DOC creation. |
-| [SETUP.md](../SETUP.md) | Created phased Ubuntu owner setup guide with observed machine state and candidate compatibility matrix. |
-| [ENV_GUIDE.md](../ENV_GUIDE.md) | Created proposed variable registry and public/private/rotation rules; no values created. |
-| [test-command.md](../test-command.md) | Created S0 read-only checks, layered testing conventions, critical expectations and 82 future placeholders. |
+| [pre-implementation-audit.md](pre-implementation-audit.md) | New final report, findings and traceability appendices. |
+| [Approved plan](plans/part-audit-docs-final-pre-implementation-audit.md) | Existing untracked SAVE artifact retained byte-for-byte; no execution amendment. |
+| [SETUP](../SETUP.md), [ENV_GUIDE](../ENV_GUIDE.md) | First-use prerequisites, command ownership/env wiring, approval timing, CNG and Android identity clarified. |
+| [task.md](../../task.md) | Documentation evidence, staged acceptance and missing explicit assertions; all 82 application statuses/dependency edges preserved. |
+| [ARCHITECTURE](../ARCHITECTURE.md) | Existing re-enable and set-kind requirements made explicit; T22 and current runbook wording aligned. |
+| [STRUCTURE](../STRUCTURE.md) | Audit creation records, current plan/report paths and corrected planned milestone labels. |
+| [test-command](../test-command.md) | Actual runnable audit check and observed results; early runner/service conventions and approved environment distinctions. |
+| [AGENTS](../../AGENTS.md), [README](../../README.md), [plan index](plans/README.md) | Existing runbook/audit status and navigation aligned; no approval-policy change. |
+| [MEMORY](MEMORY.md), [HANDOFF](HANDOFF.md) | Concise durable audit lessons and actual live state/evidence/next action. |
 
-## Commands run and actual results
+Original PDF and ANALYSIS remain unchanged. CLAUDE remains the unchanged bridge to canonical AGENTS. No `.codex/`, application/tooling scaffold, dependency, env file, credential, prompt text artifact or deployment was created. Temporary PDF images and the audit checker were kept under `/tmp`, outside the repository. No Git staging, commit, push or history mutation occurred.
 
-The prior documentation command evidence below is preserved from COORD-DOCS/README-DOC. This continuation records its own final checks separately; it does not claim to have created the prior README or repeated every historical command. All repository reads/checks ran from `/home/sanjoy-rozario/Parsefit` unless a command used an absolute path. No second terminal/application service was needed for this documentation task. Temporary extraction/generation/validation artifacts are outside the repository under `/tmp`.
+## Actual verification, 13 October 2026
 
-| Actual command/action | Observed result |
+Working directory: `/home/sanjoy-rozario/Parsefit`. One terminal; no application services or second terminal. Literal runnable checks and expected/observed separation are in [the audit runbook](../test-command.md#audit-docs-documentation-verification).
+
+| Check | Observed result |
 | --- | --- |
-| `rg --files` and `git status --short` before README-DOC writes | Confirmed no root README, no application manifests, and existing uncommitted COORD-DOCS files; those owner changes were preserved. |
-| `cat`/`sed` of required authority documents and `pdftotext -f 19 -l 19 -layout` | Reviewed product/architecture/roadmap context for the README; PDF physical p.19 extraction succeeded. |
-| `python3` local Markdown-path check on root README | Checked 11 Markdown links; zero missing local paths. Documentation check only. |
-| `git diff -- docs/STRUCTURE.md` and `git status --short` after README-DOC writes | Reviewed current worktree; no Git staging, commit or push. Diff includes earlier uncommitted COORD-DOCS changes. |
-| `git diff --check` and README newline/whitespace check | Exit 0; README has 45 lines, no trailing whitespace and a final newline. |
-| `cat` of the attached request and `cat`/`sed`/`rg` reads of the four sources and applicable skill instructions | Sources read. Large combined tool output was truncated; subsequent chunked reads and read-only full-source reviewers supplied the missing context. |
-| `git status --short` before edits; `git ls-files` | Initial worktree clean; four source documents tracked. Read-only Git inspection only. |
-| `rg --files` and `ls -la .codex docs/agent 2>/dev/null` during initial inventory | Only four source docs existed; `.codex` and `docs/agent` absent. The combined inventory command exited 2 because those optional directories did not exist; this was not an application test. |
-| `wc -l -c docs/*.md` | Existing analysis/architecture/structure size/line inventory returned successfully. |
-| `pdftotext -layout docs/Adaptive_Health_App_Product_Blueprint.pdf /tmp/parsefit-blueprint.txt` and `pdfinfo docs/Adaptive_Health_App_Product_Blueprint.pdf` | Extraction succeeded; PDF has 24 pages. No source PDF modified. |
-| `pdftoppm -f 19 -l 19 -scale-to 1400 -png -singlefile docs/Adaptive_Health_App_Product_Blueprint.pdf /tmp/parsefit-blueprint-roadmap` | Render succeeded; p.19 visually reviewed for MVP table and literal build order. Read-only reviewer also visually checked p.22. |
-| `sha256sum docs/Adaptive_Health_App_Product_Blueprint.pdf docs/ANALYSIS.md docs/ARCHITECTURE.md docs/STRUCTURE.md` before edits | Captured source integrity baselines; PDF matched documented hash. STRUCTURE is the only approved source file intentionally updated in this task. |
-| `python3 /tmp/build_parsefit_plan.py` | Exit 0; generated task.md with 82 proposed parts, 18 fields each, initially 2,115 lines. This is document generation, not application code. |
-| `apply_patch` documentation writes | Succeeded; six requested documentation files created and STRUCTURE status registry updated. |
-| Official OpenAI documentation search/open | Model-selection and IDE pages reviewed for selection guidance; availability is not asserted from API model documentation. VS Code picker controls actual options. |
-| `python3 /tmp/parsefit-doc-check.py` on 12 October 2026 | Exit 0, PASS: 82 cards × 18 ordered fields; 82 matching Not Started status rows; 137 resolving local links/anchors; acyclic known dependencies; all R01-R74/D1-D12/T01-T34 mapped; protected PDF/ANALYSIS/ARCHITECTURE hashes unchanged; no scaffold/setup/config/part-plan artifacts. Earlier D2 trace omission was corrected before this passing run. This temporary checker is outside the repository and is not an application test script. |
-| `python3 -` exact-path brace check on 12 October 2026 | Exit 0, PASS: file extensions no longer acquire directory slashes; corrected 0D/23/23A/23B/42 path groups. |
-| Resumed `cat`/`sed`/`git status --short`/`git log -3 --oneline` reads | Confirmed committed prior README/coordination work and preserved it; only task.md, MEMORY.md and HANDOFF.md modified by the continuation. An inventory `ls` exited 2 because earlier temporary checker scripts were no longer present; a new checker was recreated under /tmp. No application blocker. |
-| `git diff --check` on 12 October 2026 | Exit 0; no whitespace errors. Read-only Git inspection; no staging, commit, push or history mutation. |
-| Final read-only architecture/product/coordination review | All required workflow/content present; fixed exact paths, early test-runner dependency gap, API prerequisite, warm-up/working classification, comparable-history ownership and source references. No remaining substantive review issue. |
+| `GIT_OPTIONAL_LOCKS=0 git status --short`; `rg --files --hidden -g '!.git/**'` | Identified prior SAVE work; only documentation paths exist, no generated agent config or repository prompt text file. |
+| Complete source reads and `pdftotext` physical-page extraction | Blueprint/analysis/architecture/tasks/guides/continuity reviewed; 24 physical PDF pages accounted for. |
+| `pdftoppm` physical pages 7/19/22 and image inspection | Exit 0; calendar, MVP order and seven acceptance scenarios visually checked. PDF not modified. |
+| Python documentation checker, exact body reproduced in runbook | Exit 0: 15 Markdown files, resolving local links/anchors, 82 matching table/card pairs with 18 fields, unchanged acyclic dependencies, 143 unique capability rows covering all R01–R74/T01–T34, three protected source hashes and documentation-only scope. |
+| `GIT_OPTIONAL_LOCKS=0 git diff --check`; diff/stat and untracked artifact review | Exit 0; no tracked whitespace errors; changes limited to approved documentation scope. Approved-plan Markdown is preserved verbatim. |
+| Official-source browsing | Dated sources and limits recorded in report Appendix E; documentation support only, no installed combination tested. |
+| Application types/lint/tests/build/PG/IndexedDB/SQLite/web/native/operations/pilot | Not run: no approved application implementation or scaffold/scripts/services/builds; owning parts must supply these plus actual browser/device/reviewer/owner prerequisites. |
 
-**Application verification:** Not run. No Node/pnpm application manifests, test scripts, installed application dependencies, browser app, Android build, database service, deployment or production environment exists yet. No runtime test is claimed passing.
+The first drafting-time link check flagged the audit runbook anchor before that section had been added; it was added and the complete check passed. No unresolved documentation verification failure remains.
 
-**SETUP-DOC read-only/documentation evidence, 12 October 2026:** `cat /etc/os-release`, `git --version`, `node --version`, `docker --version`, `docker compose version`, `java -version` observed Ubuntu 24.04.4, Git 2.43.0, Node 24.21.0, Docker 29.8.2, Compose 5.6.0, OpenJDK 21.0.12.1. `command -v` inventory found no pnpm, psql, adb or Android Studio on `PATH`; it did find Git, Node, Corepack, Docker, Java, VS Code and Poppler. Docker daemon access, browser/device/CI access and native build compatibility were not tested. `rg` and `sed` inspected authority files, PDF physical pp.18-19/22-23 were extracted with `pdftotext`, official Node/Expo/pnpm/Android/Docker/Playwright/Maestro/hosting/Codex documentation was consulted, and `git status --short` showed a clean worktree before edits. A read-only Python documentation check passed for 8 files, 151 local links, final newlines/trailing whitespace and all 82 roadmap IDs in the test index. `git diff --check` exited 0. PDF SHA-256 still matches ARCHITECTURE's `31c85d96fa511dbd3b9243612254b6fb7d8c15200e644ed3fd57dfe78a25b358`. `rg --files` for package/lock/env/compose/signing files returned exit 1 (none found), expected for this documentation-only stage. No installation, auth or mutating app workflow was run.
+## Outstanding gates and setup state
 
-## User decisions and durable context
+S0 has not been completed by this audit. The 12 October read-only inventory remains historical: Ubuntu 24.04.4 LTS; Git 2.43.0; Node 24.21.0; Docker 29.8.2; Compose 5.6.0; OpenJDK 21.0.12.1; pnpm, psql, adb and Android Studio not found on PATH. Daemon access, actual browsers/Safari, Android SDK/device and CI availability are unverified. Do not treat this inventory as current installed compatibility.
 
-- The owner-requested SETUP-DOC prompt authorizes only the three guides and consistent documentation updates. Prior COORD-DOCS/README-DOC work is preserved. No scaffolding, dependency installation, feature code, real secrets or application-part implementation is authorized.
-- ARCHITECTURE records approved Expo stack direction, O2 page-19 MVP/deferrals, O3 next-journal-day targets/explicit finish-skip sequence, and protected-store direction. Do not re-request those choices or silently edit ANALYSIS.
-- Website first; installed Android proof during foundation; guest with optional accounts/sync; Bangladesh-first food validation; English UI with Bangla-English examples; optional bounded MVP AI; quality over model-use minimization.
-- Owner reviews each concrete plan, separately approves it, has it saved without implementation, then instructs implementation. Owner performs commits/pushes manually. No implementation approval or Git mutation supplied by this task.
-
-## Outstanding issues and environment/tool prerequisites
-
-S0 owner setup has not begun. The limited machine inventory above is observed; pnpm and Android tools were absent on `PATH`, and no package/browser/device compatibility was validated. Exact tested compatibility is a 0A/0G foundation deliverable.
-
-O1 empirical feasibility remains open. O4 key/unlock/recovery/metadata/local-copy policy, O5 qualified policy/content review, O6 coupled replay/retention/deletion/export/backup policy, O7 infrastructure/operator/budget, O8 rights/AI processing/caps and O9 adult pilot/privacy/distribution review remain unresolved where ARCHITECTURE says so. Synthetic development can proceed within its gates; real health data/advice/external processing/release cannot bypass them. No current tool failure blocks this documentation deliverable.
-
-The three setup guides exist. `docs/agent/plans/` contains only README.md. All application/test/infra paths remain proposed future destinations.
+O1 empirical feasibility stays open through 0N. O4 protected-storage/key/recovery policy gates real data. O5 gates automated advice, O6 production retention/replay/deletion/export/recovery commitments, O7 provisioning/budget, O8 rights/provider processing and O9 real pilot/release. O2/O3 are already approved. See [report §4](pre-implementation-audit.md#4-remaining-unresolved-decisions) and architecture §14.3 for exact affected phases.
 
 ## Exact next action
 
-Owner follows [SETUP.md](../SETUP.md) and [ENV_GUIDE.md](../ENV_GUIDE.md) to complete S0 manually, recording tool versions and unavailable browser/device prerequisites without secrets. Then request **PLAN part 0A only**. Agent saves a Proposed plan under the mandated directory, waits for owner approval, then performs a separate approved-plan SAVE step with no implementation. Implementation begins only on the next explicit instruction. Do not begin 0A or another part automatically.
-
-## Next handoff update
-
-Replace live status rather than append chat history: active part/phase, sole owner, actual approved plan link/revision, changed files, literal commands with observed outcomes, outstanding issues, decisions, precise next action, blockers and verification date. Supported phases: awaiting setup, planning, approved, implementing, validating, blocked. Record any required failed/not-run checks; keep task status unfinished until acceptance evidence exists.
+Owner follows [SETUP](../SETUP.md) Phase A/S0: verify Git, supported Node, pnpm, Docker/Compose and editor workflow; record later browser/device access gaps. Do not run nonexistent application scripts. After S0, request **PLAN 0A — Repository and compatible toolchain**. Do not repeat AUDIT-DOCS approval, automatically implement 0A, install repository dependencies or create provider accounts under this audit's authority. The owner reviews/commits/pushes documentation manually if desired.

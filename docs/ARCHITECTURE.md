@@ -85,6 +85,8 @@ Expo Router route files are thin composition/navigation entries. Feature directo
 
 Food, Workout, Sleep, Overall remain in that order on both platforms. Disabling a tracker preserves access to its history/settings, stops prompts and removes current combined evaluation. Optional compact navigation hides disabled trackers while retaining a settings/history entry point. Overall is a read-model consumer, not another journal obligation [P pp. 4, 12].
 
+Re-enabling restores prior preferences and asks whether the old goal still applies [P p.4; R08]. That review does not silently reactivate or rewrite historical targets; any newly accepted activation follows section 6.2's next-journal-day rule.
+
 | Viewport, logical pixels (E defaults) | Layout |
 | --- | --- |
 | Under 600 | Single-column screens, bottom navigation, full-screen editors where space requires; safe areas and keyboard avoidance on Android. |
@@ -494,6 +496,8 @@ Send only purpose-necessary consented content, never the whole journal by defaul
 
 Plans are intentions. A performed row exists only after a completion action; unchecked defaults and drafts do not count toward volume [P pp. 9, 22]. Every exercise instance has stable set slots, including explicitly added sets. Adding/duplicating a planned set creates a new slot with no performed values. Rechecking an undone set uses its retained performed ID.
 
+Preserve each slot's warm-up versus working set classification in original-plan snapshots and performed history [P p.8; R28]. Comparable-history queries distinguish this classification alongside exercise, equipment, measurement mode and load convention; undone or incompatible work cannot become a suggested previous performance. Parts 8/9 and 23C verify these existing requirements.
+
 | Object | Persisted state | Display/derived meaning |
 | --- | --- | --- |
 | Planned occurrence | scheduled, consumed-finished, consumed-skipped | Move changes its date only. Consumed state links the responsible outcome; each occurrence is consumed at most once. |
@@ -677,7 +681,7 @@ All tests below are planned, not executed. Use synthetic data only until O4 and 
 | Security/accessibility | Negative authorization/reference/CSRF, secret/log inspection, automated accessibility + keyboard/screen readers/zoom/motion | Relevant changes plus release audit; manual physical-device/assistive-technology evidence. |
 | Operations/policy/pilot | Restore/deletion-suppression rehearsal, migrations, load/provider/email outage, reviewer fixtures and observed adult pilot | M0 measurements; M4 recovery; O5/O8 before advice/external processing; M6 release. |
 
-Root scripts and future `docs/test-command.md` will provide local equivalents to CI. Select a mutually compatible Expo/React/RN/jest-expo/RNTL renderer set; use Vitest for framework-independent code and Jest for RN components, with separate test discovery. No invented coverage percentage or success benchmark replaces scenario evidence. Package versions, native Android OS floor, performance budgets and exact browser versions are measured/recorded at foundation, not claimed here.
+Future root scripts and the existing `docs/test-command.md` runbook provide local equivalents to CI as each part implements them. Select a mutually compatible Expo/React/RN/jest-expo/RNTL renderer set; use Vitest for framework-independent code and Jest for RN components, with separate test discovery. No invented coverage percentage or success benchmark replaces scenario evidence. Package versions, native Android OS floor, performance budgets and exact browser versions are measured/recorded at foundation, not claimed here.
 
 ### 12.2 Acceptance matrix preserving T01-T34
 
@@ -706,7 +710,7 @@ T01-T07 are the seven blueprint p. 22 release scenarios. The remaining IDs prese
 | T19 | Crash/quota/denial/encryption/migration failure commits record+outbox together or neither; no false save; recovery preserves checked sets. | Real stores, devices |
 | T20 | Interrupted guest import into existing account preserves identities/references, progress and choice; no content-based deduplication. | API, E2E |
 | T21 | Foreign IDs/references/cursors/CSRF rejected; switch drops stale responses; session expiry/401/403 preserves pending work. | Security, browser/native |
-| T22 | Sleep-only onboarding asks no calories; later modules reuse profile; Add preserves date; notes/weight, stable tabs and detail/numeric controls work. | Components, E2E, pilot |
+| T22 | Sleep-only onboarding asks no calories; later modules reuse profile; re-enabling restores preferences and reviews the old goal without rewriting history; Add preserves date; notes/weight, stable tabs and detail/numeric controls work. | Components, E2E, pilot |
 | T23 | Stale updates cannot resurrect deleted records/accounts; only bound deletion proof triggers remote-requested local purge; undo expiry/raw/derived cleanup honored. | API, two clients, operations |
 | T24 | Warmed-shell offline reload works; no generic private API cache; old/new tabs and shell/schema upgrades preserve pending operations. | Browser E2E |
 | T25 | Keyboard/focus/screen-reader/zoom/reflow/touch/reduced-motion pass; chart meaning has text; numeric hiding retains records and respects accessibility text. | Automated + manual platforms |

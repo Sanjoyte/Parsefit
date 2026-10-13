@@ -7,7 +7,7 @@
 1. Read [SETUP.md](SETUP.md) and [ENV_GUIDE.md](ENV_GUIDE.md). Complete S0 manually. Pick only the approved part and follow its saved plan.
 2. A part's section is runnable only after that part creates the stated scripts/files and replaces its placeholder below with literal commands. Run commands from the **working directory shown for that command**. A path in [STRUCTURE.md](STRUCTURE.md) marked PLANNED is not a command.
 3. Open the specified number of terminals. Long-running services stay in separate terminals; a command that performs a one-shot check should exit. Stop foreground services with `Ctrl-C` in their own terminal. Stop only the isolated Compose stack according to the part's recorded command; never remove a volume/database just to reset a failed test without an approved recovery step.
-4. Use synthetic fixtures and isolated local/test services. Never run migration, deletion, fault injection or test suites against staging/production or real health records. Record component/OS/browser/device versions and only secret **names/presence**, never values.
+4. Use synthetic fixtures and isolated local/test services for routine tests, migration/deletion and fault injection. Part 42 may rehearse specifically approved operations in separate synthetic staging; part 44 permits only the separately approved limited production smoke using a synthetic account. Those plans must name the target and cleanup boundary. Never point a routine test suite at staging/production or use real health records for fault tests. Record component/OS/browser/device versions and only secret **names/presence**, never values.
 5. Record `Expected` before running and `Observed` after running with date, command, exit code, environment, browser/device/build and evidence location. A green message in a planned checklist is not observed proof. If a required check cannot run, write `Blocked` or `Not run` with the exact prerequisite; leave the active part In Progress or Blocked. `Done` follows the [task status rules](../task.md#status-and-evidence-rules).
 
 **Shell notation:** code blocks use bash on Ubuntu unless labelled otherwise. Do not type a leading `$` if one appears in a linked vendor example. `<...>` in prose is a value to obtain, not a literal command. `pnpm exec` refers to a package already installed by an approved part. Never run a guessed `pnpm test`, `pnpm dev`, Compose service name or migration command. A browser URL appears only after a part fixes the actual local port/route. For shell setup checks, `command -v NAME` tests presence and prints a path; it does not establish compatibility.
@@ -31,7 +31,7 @@ Expected: commands for tools actually installed print versions; a missing pnpm/a
 
 ## 2. Service and terminal convention once implemented
 
-Part 0D must record the exact Compose file, service names, API start/migration/health commands and port. Part 0E must record the Expo web start/export command and browser URL. Part 0F must record browser binary installation and Playwright commands. Part 0G must record build/install/ADB/Maestro commands. Until those files exist, no literal startup command is safe to put here.
+Part 0D must record the exact Compose file, environment-file wiring, service names, API start/migration/health commands and port. Part 0E must record the Expo web start/export command, browser URL, pinned Playwright/browser installation and browser-check commands needed for its own acceptance. Part 0F consolidates those existing runners in CI and records CI/local equivalents. Part 0G must record build/install/ADB/Maestro commands. Until those files exist, no literal startup command is safe to put here.
 
 Typical arrangement **after those parts specify it**: terminal 1 runs the isolated database/email Compose stack, terminal 2 runs the Fastify API, terminal 3 runs the Expo web dev server or static preview. One-shot migrations/tests run in a separate terminal after service readiness. A browser/Android test may require an additional terminal. The implementing part must replace this illustrative arrangement with exact count, directories, ports, readiness check, shutdown and cleanup. Do not start the API before required migration/readiness instructions.
 
@@ -203,3 +203,169 @@ Every row below is **Future placeholder — no executable command, no observed r
 | AI/provider outage | Confirm deterministic/manual fallback; avoid logging prompt or private records. |
 
 Stop after documenting the active part's actual evidence. Do not advance to the next part without a new owner instruction.
+
+
+## AUDIT-DOCS documentation verification
+
+Approved documentation-only audit, 13 October 2026. Prerequisites: this documentation checkout, existing Python 3, Git and ripgrep; Poppler only for the optional repeated PDF inspection below. **Working directory: repository root. One terminal, no service and no second terminal.** No package manager or application runner is needed. This is an audit snapshot check: later approved parts must update its scope/status assumptions rather than treating today's absence of code as a permanent rule.
+
+Run this literal command to check local Markdown links/anchors, task table/card fields, dependencies, coverage IDs, protected sources and documentation-only scope. It reads document content and Git state, never environment secret values. Coverage-ID presence supplements the report's manual semantic review; it cannot establish product correctness by itself.
+
+```bash
+python3 - <<'PY_AUDIT'
+from pathlib import Path
+import hashlib, re, subprocess
+from urllib.parse import unquote
+
+root = Path.cwd()
+assert (root / 'AGENTS.md').is_file(), 'Run from repository root'
+paths = subprocess.check_output(['rg', '--files', '--hidden', '-g', '!.git/**'], text=True).splitlines()
+md = {Path(p).resolve(): Path(p).read_text() for p in paths if p.endswith('.md')}
+def unfence(s):
+    return re.sub(r'^```[^\n]*\n.*?^```[^\n]*$', '', s, flags=re.M | re.S)
+def anchors(s):
+    clean = unfence(s)
+    result = set(re.findall(r'<a\s+id="([^"]+)"', clean))
+    counts = {}
+    for heading in re.findall(r'^#{1,6}\s+(.+?)\s*#*$', clean, re.M):
+        heading = re.sub(r'\[([^]]+)\]\([^)]*\)', r'\1', heading)
+        slug = re.sub(r'[^\w\- ]', '', heading.lower()).replace(' ', '-')
+        n = counts.get(slug, 0)
+        counts[slug] = n + 1
+        result.add(slug + (f'-{n}' if n else ''))
+    return result
+links = 0
+for path, body in md.items():
+    for target in re.findall(r'(?<!!)\[[^\]\n]+\]\(([^\n]+?)\)', unfence(body)):
+        target = target.strip().strip('<>')
+        if re.match(r'^[a-z]+://|^mailto:', target):
+            continue
+        local, _, fragment = unquote(target).partition('#')
+        local = re.sub(r':\d+$', '', local)
+        dest = (path.parent / local).resolve() if local else path
+        assert dest.exists(), f'Missing link: {path.name}: {target}'
+        if fragment and dest.suffix == '.md':
+            assert fragment in anchors(md.get(dest, dest.read_text())), f'Missing anchor: {path.name}: {target}'
+        links += 1
+
+task = (root / 'task.md').read_text()
+cards = re.findall(r'^### (\d+[A-Z]?) - ([^\n]+)\n(.*?)(?=^### |\Z)', task, re.M | re.S)
+expected = {f'0{chr(c)}' for c in range(65, 79)} | {str(n) for n in range(1, 66)} | {'23A', '23B', '23C'}
+assert len(cards) == 82 and {c[0] for c in cards} == expected
+rows = {}
+for line in task.splitlines():
+    if line.startswith('| [ ] | ['):
+        cells = [c.strip() for c in line.strip('|').split('|')]
+        part = re.match(r'\[(\d+[A-Z]?) - ', cells[1]).group(1)
+        assert part not in rows
+        rows[part] = cells
+assert set(rows) == expected
+
+def deps(s):
+    s = s.split('Require their acceptance')[0]
+    ids = set(re.findall(r'\b(?:0[A-N]|23[A-C]|[1-9]\d?)\b', s))
+    assert ids <= expected, f'Unknown dependencies: {ids - expected}'
+    return ids
+
+graph = {}
+for part, title, body in cards:
+    fields = re.findall(r'^(\d+)\. \*\*([^*]+):\*\* (.+)$', body, re.M)
+    assert [int(f[0]) for f in fields] == list(range(1, 19)), part
+    data = {int(n): value for n, _, value in fields}
+    cells = rows[part]
+    assert cells[4] == 'Not Started' and '; Not Started; [ ] complete.' in data[1], part
+    assert cells[1] == f'[{part} - {title}](#part-{part.lower()})', part
+    assert deps(cells[3]) == deps(data[3]), part
+    assert data[17].startswith(cells[5] + ';') and data[18].startswith(cells[6] + ';'), part
+    assert '[ ]' in data[13] and '[ ]' in data[16], part
+    graph[part] = deps(data[3])
+seen, active = set(), set()
+def visit(part):
+    assert part not in active, f'Cycle at {part}'
+    if part in seen:
+        return
+    active.add(part)
+    for parent in graph[part]:
+        visit(parent)
+    active.remove(part)
+    seen.add(part)
+for part in graph:
+    visit(part)
+old = subprocess.check_output(['git', 'show', 'HEAD:task.md'], text=True)
+old_cards = re.findall(r'^### (\d+[A-Z]?) - [^\n]+\n(.*?)(?=^### |\Z)', old, re.M | re.S)
+old_graph = {part: deps(re.search(r'^3\. \*\*Prerequisites:\*\* (.+)$', body, re.M).group(1)) for part, body in old_cards}
+assert graph == old_graph, 'Audit changed dependency edges'
+
+report = (root / 'docs/agent/pre-implementation-audit.md').read_text()
+matrix = report.split('## Appendix A.', 1)[1].split('## Appendix B.', 1)[0]
+capabilities = re.findall(r'^\| (R\d{2}[a-z]?) /', matrix, re.M)
+assert len(capabilities) == len(set(capabilities)), 'Duplicate capability row'
+assert {r[:3] for r in capabilities} == {f'R{n:02}' for n in range(1, 75)}
+assert set(re.findall(r'\bT\d{2}\b', matrix)) == {f'T{n:02}' for n in range(1, 35)}
+for line in matrix.splitlines():
+    if re.match(r'^\| R\d', line):
+        assert len(line.strip('|').split('|')) == 8, line
+assert {int(n) for n in re.findall(r'^## (\d+)\.', report, re.M)} == set(range(1, 9))
+
+protected = {
+ 'docs/Adaptive_Health_App_Product_Blueprint.pdf': '31c85d96fa511dbd3b9243612254b6fb7d8c15200e644ed3fd57dfe78a25b358',
+ 'docs/ANALYSIS.md': '9ed98f259756e5c7110ad06320a92dd7d894cef1f5bdbefc8d88d0e22eeca2b3',
+ 'docs/agent/plans/part-audit-docs-final-pre-implementation-audit.md': 'c85d2acd746bd670f4123d71fb6ebec41218ae190f71841b63c100579c26a6c6',
+}
+for name, digest in protected.items():
+    assert hashlib.sha256((root / name).read_bytes()).hexdigest() == digest, name
+allowed = {
+ 'AGENTS.md', 'README.md', 'task.md', 'docs/ARCHITECTURE.md', 'docs/ENV_GUIDE.md',
+ 'docs/SETUP.md', 'docs/STRUCTURE.md', 'docs/test-command.md', 'docs/agent/HANDOFF.md',
+ 'docs/agent/MEMORY.md', 'docs/agent/plans/README.md',
+ 'docs/agent/pre-implementation-audit.md',
+ 'docs/agent/plans/part-audit-docs-final-pre-implementation-audit.md',
+}
+status = subprocess.check_output(['git', 'status', '--porcelain=v1', '--untracked-files=all'], text=True)
+changed = {line[3:] for line in status.splitlines()}
+assert changed <= allowed, f'Out-of-scope changes: {changed - allowed}'
+assert all(line[:2] in {' M', '??'} for line in status.splitlines()), 'Unexpected index/status change'
+assert all(p.endswith(('.md', '.pdf')) for p in paths), 'Unexpected non-document artifact'
+assert not any((root / p).exists() for p in ['apps', 'packages', 'package.json', '.codex']), 'Unexpected scaffold/config'
+assert len([p for p in paths if Path(p).name == 'task.md']) == 1
+subprocess.run(['git', 'diff', '--check'], check=True)
+print(f'PASS: {len(md)} Markdown files; {links} local links/anchors; 82 cards/table rows with 18 fields; acyclic unchanged dependencies; {len(capabilities)} capability rows cover R01-R74 and T01-T34; 3 protected hashes; {len(changed)} allowed unstaged documentation paths; no scaffold/config/prompt artifact; diff whitespace clean.')
+PY_AUDIT
+```
+
+**Expected:** PASS with 82 matching cards/table rows, 18 fields per card, unchanged acyclic dependencies, every R01–R74/T01–T34 represented, protected hashes unchanged and only allowed unstaged documentation paths. Local-link counts can change with documentation edits. Failure means inspect the named document/anchor/field; do not generate application files or waive a required check.
+
+Additional literal read-only checks:
+
+```bash
+GIT_OPTIONAL_LOCKS=0 git status --short
+GIT_OPTIONAL_LOCKS=0 git diff --check
+GIT_OPTIONAL_LOCKS=0 git diff --stat
+rg --files --hidden -g '!.git/**'
+sha256sum docs/Adaptive_Health_App_Product_Blueprint.pdf docs/ANALYSIS.md docs/agent/plans/part-audit-docs-final-pre-implementation-audit.md
+pdftotext -f 19 -l 19 -layout docs/Adaptive_Health_App_Product_Blueprint.pdf -
+pdftotext -f 22 -l 22 -layout docs/Adaptive_Health_App_Product_Blueprint.pdf -
+```
+
+**Expected:** intended Markdown changes only; no whitespace diagnostics; original PDF/ANALYSIS/approved plan hashes match the checker; physical pages 19/22 show MVP order and seven acceptance cases. `git diff --stat` omits untracked files, so inspect the new report/approved plan too. The audit rendered physical pages 7/19/22 using these commands (temporary files outside the repository):
+
+```bash
+pdftoppm -f 7 -l 7 -scale-to 1200 -png -singlefile docs/Adaptive_Health_App_Product_Blueprint.pdf /tmp/parsefit-audit-p07
+pdftoppm -f 19 -l 19 -scale-to 1200 -png -singlefile docs/Adaptive_Health_App_Product_Blueprint.pdf /tmp/parsefit-audit-p19
+pdftoppm -f 22 -l 22 -scale-to 1200 -png -singlefile docs/Adaptive_Health_App_Product_Blueprint.pdf /tmp/parsefit-audit-p22
+```
+
+Open the resulting PNGs in an image viewer and compare calendar states, page-19 scope and page-22 scenarios with the report. Browser/device application steps: **Not applicable to this documentation part**; real application checks remain Not run until their owning parts create scripts/builds and the required stores, browsers, native device and approval gates are available. No runtime result may be inferred from these documentation checks.
+
+### Observed audit results — 13 October 2026
+
+| Actual check | Observed result |
+| --- | --- |
+| Python checker above (first run from an identical temporary file, then final run directly from this runbook's body) | Exit 0, PASS: 15 Markdown files; 297 local links/anchors; 82 matching task cards/table rows with 18 fields; unchanged acyclic dependencies; 143 unique capability rows covering R01–R74 and T01–T34; three protected hashes; 13 allowed unstaged documentation paths. |
+| `git status --short`, `rg --files --hidden -g '!.git/**'` | Exit 0; 11 modified tracked Markdown files, new audit report and previously saved untracked approved plan. No scaffold, generated agent config, env file or prompt text artifact. |
+| `git diff --check`, `git diff --stat`, review of tracked diff and new documents | Exit 0; no whitespace errors; bounded documentation changes only. No staged changes, commit or push. |
+| `sha256sum` for PDF, ANALYSIS and approved plan | Exit 0; all three match the pre-audit hashes embedded in the checker. |
+| `pdftotext` extraction and `pdftoppm` renders, pages 7/19/22 inspected visually | Exit 0; source layout and acceptance meaning reviewed; original PDF unchanged. |
+| Application/static/build/browser/device/real-store/operational/pilot tests | **Not run.** No application manifests/scripts/builds/services exist. Prerequisites and first owning parts are in the audit report; documentation completion does not waive them. |
+
+A drafting-time run initially found the not-yet-added audit runbook anchor. Adding this section resolved it; the completed checker has no unresolved failure. These observations apply to the audit snapshot only, not future owner setup or runtime compatibility.

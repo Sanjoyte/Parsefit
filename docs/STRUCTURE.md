@@ -10,6 +10,8 @@
 
 **Creation-record update:** 12 October 2026, SETUP-DOC. This update records three guide files only; candidate versions and proposed variable names are not pinned application compatibility or deployed configuration.
 
+**Creation-record update:** 13 October 2026, AUDIT-DOCS. The approved audit plan and audit report now exist; bounded documentation corrections align setup order, task acceptance ownership and existing product requirements. Application/tooling paths remain planned.
+
 **Behavioral authority:** [ARCHITECTURE.md](ARCHITECTURE.md)
 
 **Product/decision inventory:** [ANALYSIS.md](ANALYSIS.md) and [product blueprint](Adaptive_Health_App_Product_Blueprint.pdf)
@@ -26,6 +28,7 @@ This is a small pnpm/strict-TypeScript monorepo plan: one universal Expo applica
 | CREATED IN PART COORD-DOCS | Created by the later owner-requested execution/agent-continuity documentation task; no application implementation implied. |
 | CREATED IN PART README-DOC | Created by the owner-requested root README task; no application implementation implied. |
 | CREATED IN PART SETUP-DOC | Created by the owner-requested setup-documentation task; no application implementation or environment provisioned. |
+| CREATED IN PART AUDIT-DOCS | Approved audit plan and documentation-only audit report; no application implementation or runtime compatibility evidence. |
 
 Milestones M0-M6 retain the analysis's meanings: feasibility, manual journals, workout/schedule, targets/aggregates, accounts/sync/privacy, vetted intelligence, website pilot. Later means separately approved post-MVP work. Files used by a prototype may begin at M0 with synthetic behavior and acquire full implementation later; that does not mean their production gate has passed.
 
@@ -37,7 +40,7 @@ Every tree entry below is annotated. The trees are maintained-source plans, not 
 Parsefit/                                      [EXISTING] Repository root
 ├── .git/                                      [EXISTING] Version-control metadata; do not scaffold or edit manually
 ├── task.md                                    [CREATED IN PART COORD-DOCS] Proposed part sequence, scope, R/D/T IDs, status and acceptance checklists
-├── README.md                                  [CREATED IN PART README-DOC] Project orientation and links; setup commands await a later stage
+├── README.md                                  [CREATED IN PART README-DOC] Project orientation, setup/audit links and current stage
 ├── AGENTS.md                                  [CREATED IN PART COORD-DOCS] Canonical agent rules, boundaries, approval workflow and reading order
 ├── CLAUDE.md                                  [CREATED IN PART COORD-DOCS] Lightweight bridge to AGENTS.md; no independent instructions
 ├── package.json                               [PLANNED] M0 workspace scripts, packageManager, supported engines; no app secrets
@@ -65,7 +68,7 @@ Parsefit/                                      [EXISTING] Repository root
 │       ├── ci.yml                             [PLANNED] M0 types/lint/domain/contracts/components/web build
 │       ├── integration.yml                    [PLANNED] M0/M4 real stores/PostgreSQL/browser core flows and concurrency
 │       ├── android-smoke.yml                  [PLANNED] M0 installed Android build + smoke; risky shared changes must pass
-│       ├── deploy-staging.yml                 [PLANNED] M4 approved staging artifacts/migration ordering
+│       ├── deploy-staging.yml                 [PLANNED] M6 part 42 approved staging artifacts/migration ordering
 │       └── deploy-production.yml              [PLANNED] M6 reviewed promotion with environment approvals and recovery gates
 ├── infra/                                     [PLANNED] Deployment definitions; no credentials or provisioned resources
 │   ├── local/                                 [PLANNED] M0 synthetic development dependencies
@@ -92,8 +95,10 @@ Parsefit/                                      [EXISTING] Repository root
     └── agent/                                [CREATED IN PART COORD-DOCS] Agent continuity; singular directory name
         ├── HANDOFF.md                         [CREATED IN PART COORD-DOCS] Live state, changed files, actual verification, blockers and next step
         ├── MEMORY.md                          [CREATED IN PART COORD-DOCS] Durable source-backed constraints; no runtime discoveries implied
-        └── plans/                             [CREATED IN PART COORD-DOCS] Saved proposed/approved plans; no implementation plans yet
-            └── README.md                     [CREATED IN PART COORD-DOCS] Naming, approval and required plan-content convention
+        ├── pre-implementation-audit.md        [CREATED IN PART AUDIT-DOCS] Findings, traceability, portability, setup and documentation evidence
+        └── plans/                             [CREATED IN PART COORD-DOCS] Saved proposed/approved plans; no application-part plans yet
+            ├── README.md                     [CREATED IN PART COORD-DOCS] Naming, approval and required plan-content convention
+            └── part-audit-docs-final-pre-implementation-audit.md [CREATED IN PART AUDIT-DOCS] Exact approved revision 1; live execution status in HANDOFF
 ```
 
 The ten required task/documentation locations are exactly `task.md`, `docs/ANALYSIS.md`, `docs/ARCHITECTURE.md`, `docs/STRUCTURE.md`, `docs/SETUP.md`, `docs/ENV_GUIDE.md`, `docs/test-command.md`, `docs/agent/HANDOFF.md`, `docs/agent/MEMORY.md`, and `docs/agent/plans/`. ARCH-DOCS created only its two labeled documents. COORD-DOCS subsequently created the six files labeled above, including the lightweight root CLAUDE.md bridge and plans index. SETUP-DOC created the three manual guides. Application paths remain planned; guide links do not assert runnable project scripts.
@@ -166,7 +171,7 @@ apps/universal/                                [PLANNED] One web/Android applica
     │   ├── workout/                           [PLANNED] M1 set save; M2 routines/session/finish/undo controls
     │   ├── scheduling/                        [PLANNED] M2 sequence, planned rest, move/skip/pause workflows
     │   ├── equipment/                         [PLANNED] M2 owned profiles and reviewed exercise/template selectors
-    │   ├── sleep/                             [PLANNED] M1 duration/timing; M3 overlap/observation/coverage UI
+    │   ├── sleep/                             [PLANNED] M1 duration/timing/overlap reconciliation; M3 coverage UI
     │   ├── journal/                           [PLANNED] M1 weight/notes/Add/date; M3 calendars/day completeness
     │   ├── overall/                           [PLANNED] M3 aggregates; M5 one explainable suggestion/dismissal
     │   └── account/                           [PLANNED] M4 auth/import/sync/conflict/export/delete/unlock flows
@@ -213,7 +218,7 @@ apps/universal/                                [PLANNED] One web/Android applica
     │   ├── runtime/                           [PLANNED] M0 current-time/ID/connectivity/lifecycle wrappers
     │   │   ├── runtime.web.ts                 [PLANNED] Browser visibility/network/crypto/clock boundaries
     │   │   └── runtime.native.ts              [PLANNED] Native AppState/network/crypto/clock boundaries
-    │   ├── files/                             [PLANNED] M1 local export; M4 account export integration
+    │   ├── files/                             [PLANNED] M4 part 28 local export; part 29 account export integration
     │   │   ├── export.web.ts                  [PLANNED] Browser file generation/download
     │   │   └── export.native.ts               [PLANNED] Native file/share capability and cleanup
     │   └── health/                            [PLANNED] M0 isolated feasibility; product integration Later

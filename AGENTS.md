@@ -51,7 +51,7 @@ Use approved dependency families only after compatible-version checks. A new dep
 
 Feature tests must cover meaningful behaviors and edge cases, not mirror implementation. Follow ARCHITECTURE §12: Vitest/fast-check pure logic, Jest/jest-expo/RNTL components, real PostgreSQL/IndexedDB/installed SQLite contracts, Playwright and Maestro, plus actual Safari/physical-device/accessibility milestone evidence. No private API service-worker cache or forced update over active editors. Never fake test results, command output, benchmarks, devices, approvals or deployments. Expected outcomes and observed results must be separate.
 
-`docs/test-command.md` is intentionally created by a later setup prompt. Each finished part adds prerequisites, working directory, literal runnable commands, terminal count/second-terminal instructions, expected outcomes, browser/device steps, and separately dated observed results or Not run/Blocked. Do not invent scripts before they exist. Store all part plans in `docs/agent/plans/`, even when built-in plan mode uses another temporary location. MEMORY must remain concise technical knowledge with links, not a chat transcript or duplicate live status.
+`docs/test-command.md` was created by SETUP-DOC on 12 October 2026. Each finished part adds prerequisites, working directory, literal runnable commands, terminal count/second-terminal instructions, expected outcomes, browser/device steps, and separately dated observed results or Not run/Blocked. Do not invent scripts before they exist. Store all part plans in `docs/agent/plans/`, even when built-in plan mode uses another temporary location. MEMORY must remain concise technical knowledge with links, not a chat transcript or duplicate live status.
 
 ## Git and tool configuration
 

@@ -18,6 +18,8 @@
 
 `Required` means required **when that component is implemented/enabled**, not now. No exact port, domain or secret value is claimed. The local Compose service names/ports and API bind policy are fixed by 0D. `EXPO_PUBLIC_API_URL` must resolve from the actual browser and installed Android target; a phone's `localhost` is not the host computer.
 
+Part 0D also records explicit Compose interpolation/container/API environment-file wiring. `apps/api/.env` is not automatically loaded by a root Compose invocation; do not duplicate it into a combined root environment file or print resolved secret values to diagnose configuration. See the conditional commands in [SETUP Phase B](SETUP.md#phase-b--after-foundation-scaffolding-is-implemented).
+
 | Exact proposed name | Status / consumer / visibility | Obtain and safe local default | Validate without exposing value / first needed / rotation |
 | --- | --- | --- | --- |
 | `EXPO_PUBLIC_API_URL` | Required for networked client; `apps/universal`; **public** | Use the 0D API origin reachable from the current target. No one URL works for every emulator/phone/browser; no default today. | 0E/0G: load public health route from each target and verify expected origin in build config. Change/rebuild per target when the API address changes. |

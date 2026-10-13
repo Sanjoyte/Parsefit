@@ -3,6 +3,8 @@
 **Part creating this coordination system:** COORD-DOCS. **Created:** 11 October 2026. **Final review:** 12 October 2026 (Asia/Dhaka).
 **Reality:** Documentation only. No application scaffold, dependency installation, runtime tests, deployment, commit or push has occurred in this task. All build parts below are proposals and start **Not Started**. This roadmap does not approve an implementation plan.
 
+**AUDIT-DOCS:** Done, 13 October 2026; approved revision 1 executed on the owner's explicit instruction. [Report and traceability](docs/agent/pre-implementation-audit.md), [runnable documentation checks](docs/test-command.md#audit-docs-documentation-verification) and [live handoff](docs/agent/HANDOFF.md) record evidence and remaining gates. This separate documentation part does not complete S0 or any of the 82 application parts.
+
 ## Sources, scope and current paths
 
 Read [AGENTS.md](AGENTS.md), [HANDOFF](docs/agent/HANDOFF.md) and relevant [MEMORY](docs/agent/MEMORY.md), then [ARCHITECTURE.md](docs/ARCHITECTURE.md), [STRUCTURE.md](docs/STRUCTURE.md), [ANALYSIS.md](docs/ANALYSIS.md) and the relevant physical pages of the [24-page blueprint](docs/Adaptive_Health_App_Product_Blueprint.pdf). PDF page numbers below mean physical pages 1-24, not section labels. Technical foundation details are engineering requirements supporting pp.18-19, not claims the PDF chooses specific frameworks.
@@ -14,6 +16,8 @@ COORD-DOCS created this file and root AGENTS/CLAUDE plus `docs/agent/HANDOFF.md`
 ## Manual setup prerequisite S0
 
 S0 is an owner setup gate, not an application implementation part and not completed. Follow [SETUP.md](docs/SETUP.md), [ENV_GUIDE.md](docs/ENV_GUIDE.md) and [test-command.md](docs/test-command.md) for supported Node/pnpm, local PostgreSQL/email tooling, Android SDK/JDK/emulator/device/build prerequisites and test browsers. Owner installs toolchains, creates external accounts and supplies configuration; agents must not print secret values. Paid production services/provider keys/signing/store setup are deferred until their relevant approved gates. Confirm setup using read-only/version/presence checks, not an invented compatible-version claim. Record unavailable Safari/devices/CI access explicitly.
+
+For S0 entry to PLAN 0A, verify local Git, supported Node, pnpm, Docker/Compose and the editor workflow. PostgreSQL/email service configuration starts only after 0D creates it; pinned browser binaries belong to 0E; Android SDK/JDK/emulator/physical-device prerequisites must be ready for 0G, with actual Safari/browser evidence by 0N. Record future environment gaps now without claiming those later checks passed. This staging does not waive any required platform acceptance.
 
 **First implementation after S0:** 0A, Repository and compatible toolchain. First ask the agent to **PLAN 0A**; that request does not authorize implementation. Current next action is owner manual S0 using the three guides, then request PLAN 0A.
 
@@ -29,7 +33,7 @@ Only one repository editor at a time; HANDOFF names that owner. Review-only para
 6. **DOCUMENT:** Update this table/card evidence, HANDOFF, relevant durable MEMORY, STRUCTURE creation statuses and applicable docs. Finished implementation parts append commands/results to `docs/test-command.md` once created in setup. COORD-DOCS records its documentation checks in HANDOFF; it does not create the deferred command guide.
 7. **STOP:** Report changes, results, blockers and exact next action; wait. Never auto-start another part. Owner may make a normal small commit after the approved plan and after verified implementation; agents do not stage/commit/push.
 
-See [saved-plan convention](docs/agent/plans/README.md) for required scope, dependencies, exact files, sequence, tests, rollback/recovery, decisions, acceptance, approval provenance and model choices. Built-in plan-mode temporary files do not replace the approved saved Markdown. No approved part plans exist yet.
+See [saved-plan convention](docs/agent/plans/README.md) for required scope, dependencies, exact files, sequence, tests, rollback/recovery, decisions, acceptance, approval provenance and model choices. Built-in plan-mode temporary files do not replace the approved saved Markdown. No application-part plan is approved yet. The separate [AUDIT-DOCS plan](docs/agent/plans/part-audit-docs-final-pre-implementation-audit.md) approves documentation review only; its [report](docs/agent/pre-implementation-audit.md) records the audit evidence and remaining gates.
 
 ## Status and evidence rules
 
@@ -92,7 +96,7 @@ SETUP-DOC created `docs/test-command.md` with S0 checks and future placeholders;
 - Browser URLs/routes, viewport/keyboard/offline/multi-tab steps; installed APK/build/device/permission/restart/manual steps and expected visible behavior.
 - Actual evidence location, failures, recovery/cleanup instructions and any remaining blocker. Never print secrets or personal health data; no production DB tests.
 
-All cards require relevant feature tests and appropriate real-store/database/native checks; expand/repeat verification only for changed risk or unresolved evidence. Save/build success is not an assertion of manual accessibility, clinical validation or deployment.
+All cards require relevant feature tests and appropriate real-store/database/native checks; expand/repeat verification only for changed risk or unresolved evidence. Save/build success is not an assertion of manual accessibility, clinical validation or deployment. Every concrete part plan that changes persisted shapes must name its affected IndexedDB, native SQLite and/or PostgreSQL migration track, preserve pending work and record upgrade/recovery tests under ARCHITECTURE §4.4. A planned migration directory is not evidence that migrations have run.
 
 ## Part status table
 
@@ -288,7 +292,7 @@ Application/tooling/test/infra locations below are PLANNED until a part creates 
 3. **Prerequisites:** 0A, 0B, 0C, 0D. Require their acceptance evidence, not only code.
 4. **PDF pages:** 4, 7, 19 (physical pages).
 5. **ARCHITECTURE sections:** 2.1-2.3, 3.2, 12.1. Preserve relevant R/D/T mapping below and in the concrete plan.
-6. **Expected file/directory changes:** apps/universal/{package.json,app.config.ts,metro.config.js,babel.config.js,tsconfig.json,jest.config.js}; apps/universal/src/{app,ui,bootstrap,adapters/runtime}/; tests/web/playwright.config.ts; package.json (component/browser scripts). Expected change locations; absent targets are PLANNED, existing documents/configs are updated within the approved plan.
+6. **Expected file/directory changes:** apps/universal/{package.json,app.config.ts,.env.example,metro.config.js,babel.config.js,tsconfig.json,jest.config.js}; apps/universal/src/{app,ui,bootstrap,adapters/runtime}/; tests/web/playwright.config.ts; package.json (component/browser scripts and pinned runner). Expected change locations; absent targets are PLANNED, existing documents/configs are updated within the approved plan.
 7. **Interfaces/data-model dependencies:** Thin routes; measured-width layout; Clock/IdSource; public config; form schema.
 8. **Edge cases:** 600/1024 widths; zoom/large text; keyboard; invalid numeric text; Bangla glyphs; static render browser APIs.
 9. **Unit and integration tests:** Unit: Component tests for form errors, labels, layouts and date capture. Integration: Web export/routing and import-boundary checks; synthetic API health roundtrip.
@@ -445,7 +449,7 @@ Application/tooling/test/infra locations below are PLANNED until a part creates 
 ### 0L - Static routing and safe offline shell
 
 1. **Part / status:** 0L - Static routing and safe offline shell; Foundation M0; Not Started; [ ] complete.
-2. **Scope and deliverables:** Prove local exported route refresh/deep links, warmed-shell offline startup and safe update prompt. Host config proof only; no deployment/provisioning.
+2. **Scope and deliverables:** Prove local exported route refresh/deep links, warmed-shell offline startup and safe update prompt. Host config proof only; no deployment/provisioning. The concrete plan identifies and obtains approval for any required local host-preview dependency; do not assume tooling deferred to part 42 already exists.
 3. **Prerequisites:** 0E, 0I. Require their acceptance evidence, not only code.
 4. **PDF pages:** 7, 13, 18-19 (physical pages).
 5. **ARCHITECTURE sections:** 2.1, 11.3, 13.2. Preserve relevant R/D/T mapping below and in the concrete plan.
@@ -520,13 +524,13 @@ Application/tooling/test/infra locations below are PLANNED until a part creates 
 5. **ARCHITECTURE sections:** 2.1-2.2, 3.1, 4.2, 6.1-6.2. Preserve relevant R/D/T mapping below and in the concrete plan.
 6. **Expected file/directory changes:** apps/universal/src/features/{profile,preferences,journal}/; apps/universal/src/application/selected-date.ts; apps/universal/src/data/repositories/{profile-goals.ts,sleep-journal.ts}; apps/universal/src/app/{onboarding.tsx,settings.tsx,add/weight.tsx,add/note.tsx}; packages/domain/src/{profile,journal}/; packages/contracts/src/records/ (Expected change locations; absent targets are PLANNED, existing documents/configs are updated within the approved plan).
 7. **Interfaces/data-model dependencies:** Profile/PreferencePeriod; module eligibility; EventContext; Measurement/Note; selected-date port.
-8. **Edge cases:** Sleep-only asks no weight/calories; enabling another module reuses inputs; midnight editor date; disabled history; blank weight.
+8. **Edge cases:** Sleep-only asks no weight/calories; enabling another module reuses inputs; re-enabling restores preferences; midnight editor date; disabled history; blank weight. Existing-goal review is integrated when part 13 supplies goal versions.
 9. **Unit and integration tests:** Unit: Profile requirement, effective-period, date-capture and unit tests. Integration: Both repositories commit profile/preferences/measurement/note plus outbox/drafts; migration recovery.
 10. **Browser testing:** Keyboard/mobile onboarding, stable tabs, Add chosen yesterday and dirty-editor navigation.
 11. **Android compatibility:** Installed date/keyboard/back, guest save, kill/reopen and module-toggle checks.
 12. **Security/privacy:** O4 before real data; notes protected; no required account or server anonymous guest.
 13. **Acceptance criteria:** [ ] Any single module can start locally; relevant questions only; Weight/Note/Add preserve visible date and units.
-14. **Manual verification:** Start sleep-only guest, log yesterday; enable Food; verify shared answers and retained disabled history.
+14. **Manual verification:** Start sleep-only guest onboarding without weight/calorie questions; use the implemented Note shortcut to save yesterday; enable Food and verify reused answers, restored preferences and retained history. Actual Sleep entry is verified in part 5, Food in part 3, and existing-goal review in part 13.
 15. **Documentation updates:** task.md status/evidence, HANDOFF commands/results/next action, relevant MEMORY, STRUCTURE actual creation labels, and test-command runnable/expected/observed section; Record preference defaults, consent separation and source/schema creation.
 16. **Completion definition:** [ ] Approved scope delivered; all required acceptance, automated/static/build and specified manual/platform checks evidenced; docs updated; unresolved required checks keep part unfinished; report and stop before next part.
 17. **Recommended PLAN model / effort:** GPT-6 Astra / xhigh; VS Code picker availability is authoritative.
@@ -617,7 +621,7 @@ Application/tooling/test/infra locations below are PLANNED until a part creates 
 10. **Browser testing:** Duration-only save without weight/calories; optional timings/backdate and errors.
 11. **Android compatibility:** Installed overnight/date picker/keyboard/kill-reopen tests.
 12. **Security/privacy:** O4 real-data gate; no diagnosis or readiness inference from duration alone.
-13. **Acceptance criteria:** [ ] Manual Food and Sleep work independently/offline before workout state work; timing semantics preserved.
+13. **Acceptance criteria:** [ ] Manual Sleep works independently/offline; timing semantics preserved. Part 8, which depends on both 3 and 5, verifies the combined manual Food/Sleep prerequisite before workout state work.
 14. **Manual verification:** Save duration only, add a nap, backdate overnight sleep and inspect separate duration/interval meaning.
 15. **Documentation updates:** task.md status/evidence, HANDOFF commands/results/next action, relevant MEMORY, STRUCTURE actual creation labels, and test-command runnable/expected/observed section; Record manual sleep semantics and T12/T13 slice.
 16. **Completion definition:** [ ] Approved scope delivered; all required acceptance, automated/static/build and specified manual/platform checks evidenced; docs updated; unresolved required checks keep part unfinished; report and stop before next part.
@@ -796,13 +800,13 @@ Application/tooling/test/infra locations below are PLANNED until a part creates 
 5. **ARCHITECTURE sections:** 4.2-4.3, 6.2, 11.2. Preserve relevant R/D/T mapping below and in the concrete plan.
 6. **Expected file/directory changes:** packages/domain/src/goals/; apps/universal/src/features/goals/; apps/universal/src/app/goals.tsx; apps/universal/src/data/repositories/profile-goals.ts; packages/contracts/src/{records,commands.ts} (Expected change locations; absent targets are PLANNED, existing documents/configs are updated within the approved plan).
 7. **Interfaces/data-model dependencies:** GoalTimeline/version; unique daily TargetSnapshot; input/policy provenance; effective date.
-8. **Edge cases:** First activation today unassessed; offline captured tomorrow; accepted historical binding conflict; no target; goal change then old edit.
+8. **Edge cases:** First activation today unassessed; offline captured tomorrow; accepted historical binding conflict; no target; goal change then old edit; re-enabled module restores preferences and asks whether the old goal still applies without changing historical bindings.
 9. **Unit and integration tests:** Unit: Effective-date/snapshot immutability and candidate-conflict fixtures. Integration: Both stores timeline+binding CAS, migrated pending activations and invalidation tests.
 10. **Browser testing:** Activation preview clearly names effective date; no retroactive option.
 11. **Android compatibility:** Installed dates/travel/offline activation/reconnect contract scenarios.
 12. **Security/privacy:** No guessed health thresholds/forecast; owner manual controls; O5 later automation.
 13. **Acceptance criteria:** [ ] T05/T18 local semantics pass; first/subsequent next-day activation; old target/input version never rewritten.
-14. **Manual verification:** Create first target today, inspect today/tomorrow; change later and edit yesterday record.
+14. **Manual verification:** Create first target today, inspect today/tomorrow; change later and edit yesterday record. Disable/re-enable the module, review its old goal, and verify any newly accepted activation begins next journal day without rewriting past targets (R08/T05/T22).
 15. **Documentation updates:** task.md status/evidence, HANDOFF commands/results/next action, relevant MEMORY, STRUCTURE actual creation labels, and test-command runnable/expected/observed section; Record O3 activation details and future server conflict tests.
 16. **Completion definition:** [ ] Approved scope delivered; all required acceptance, automated/static/build and specified manual/platform checks evidenced; docs updated; unresolved required checks keep part unfinished; report and stop before next part.
 17. **Recommended PLAN model / effort:** GPT-6 Astra / max; VS Code picker availability is authoritative.
@@ -1135,7 +1139,7 @@ Application/tooling/test/infra locations below are PLANNED until a part creates 
 ### 25 - Explicit conflict review and compensation
 
 1. **Part / status:** 25 - Explicit conflict review and compensation; Core M4; Not Started; [ ] complete.
-2. **Scope and deliverables:** Add conflict UI and keep-server/reviewed replacement/preserve-export choices across record, goal and schedule cases. No timestamp winner or automatic overwrite.
+2. **Scope and deliverables:** Add conflict UI and keep-server/reviewed replacement/preserve-for-later choices across record, goal and schedule cases. Retain all exportable evidence; part 28 implements and verifies the local export action. No timestamp winner or automatic overwrite, and no working export control is claimed before part 28.
 3. **Prerequisites:** 24. Require their acceptance evidence, not only code.
 4. **PDF pages:** 9, 13, 18-19, 22 (physical pages).
 5. **ARCHITECTURE sections:** 5.4, 6.2, 8.3. Preserve relevant R/D/T mapping below and in the concrete plan.
@@ -1166,7 +1170,7 @@ Application/tooling/test/infra locations below are PLANNED until a part creates 
 7. **Interfaces/data-model dependencies:** Snapshot watermark/job; cursor/feed epoch; replay lease; preserved pending manifest.
 8. **Edge cases:** Paged live data changes; expired job; unknown prior accepted ID after pruning; interrupted reconciliation; incompatible old client.
 9. **Unit and integration tests:** Unit: Expiry/reconciliation/compatibility tests. Integration: Real PG concurrent snapshot/feed, both-store preserved pending work and restart tests.
-10. **Browser testing:** Expired cursor UI, multi-tab old-shell compatibility and review/export choice.
+10. **Browser testing:** Expired cursor UI, multi-tab old-shell compatibility and review/preserve choice. Preserve pending evidence for part 28's export; the integrated expired-replay-to-export path is required in part 41 after both features exist.
 11. **Android compatibility:** Installed long-offline simulated epoch expiry and interrupted bootstrap.
 12. **Security/privacy:** O6 exact durations approved, not guessed; snapshot account-bound; sensitive job payload expires.
 13. **Acceptance criteria:** [ ] T23/T24/T30 slices pass; no loss/resurrection, one consistent snapshot watermark, old uncertainty not converted to create.
@@ -1216,7 +1220,7 @@ Application/tooling/test/infra locations below are PLANNED until a part creates 
 11. **Android compatibility:** Installed native share/file cancellation and cleanup, no unprotected temporary residue.
 12. **Security/privacy:** No credentials/provider tokens; export only unlocked owned store; clear retention limits.
 13. **Acceptance criteria:** [ ] T29 local slice passes; original/canonical units/date/provenance/history retained with honest sync labels.
-14. **Manual verification:** Export synthetic disabled-module/pending/conflicted data and compare fields/CSV text without exposing real data.
+14. **Manual verification:** Export synthetic disabled-module/pending/conflicted data, including work preserved by part 25's conflict UI, and compare fields/CSV text without exposing real data. The expired-replay-to-export combination with part 26 is exercised in part 41.
 15. **Documentation updates:** task.md status/evidence, HANDOFF commands/results/next action, relevant MEMORY, STRUCTURE actual creation labels, and test-command runnable/expected/observed section; Record export schema/version and platform file behavior.
 16. **Completion definition:** [ ] Approved scope delivered; all required acceptance, automated/static/build and specified manual/platform checks evidenced; docs updated; unresolved required checks keep part unfinished; report and stop before next part.
 17. **Recommended PLAN model / effort:** GPT-6 Astra / xhigh; VS Code picker availability is authoritative.
@@ -1515,7 +1519,7 @@ Application/tooling/test/infra locations below are PLANNED until a part creates 
 11. **Android compatibility:** Installed release-like emulator and physical device Maestro/manual evidence.
 12. **Security/privacy:** Synthetic until real pilot approval; no fabricated T33 observation or premature Later T34 pass.
 13. **Acceptance criteria:** [ ] T01-T32 relevant MVP evidence complete, failures blocking; T33 reserved for 43; T34 explicitly Later.
-14. **Manual verification:** Execute seven PDF p.22 scenarios across website and installed Android with build/date/result records.
+14. **Manual verification:** Execute seven PDF p.22 scenarios across website and installed Android with build/date/result records. Also preserve unresolved work after expired replay, export it through part 28, and verify pending/conflict labels and retained evidence before any old-store cleanup (T23/T29/T30).
 15. **Documentation updates:** task.md status/evidence, HANDOFF commands/results/next action, relevant MEMORY, STRUCTURE actual creation labels, and test-command runnable/expected/observed section; Publish actual acceptance matrix and remaining pilot prerequisites.
 16. **Completion definition:** [ ] Approved scope delivered; all required acceptance, automated/static/build and specified manual/platform checks evidenced; docs updated; unresolved required checks keep part unfinished; report and stop before next part.
 17. **Recommended PLAN model / effort:** GPT-6 Astra / max; VS Code picker availability is authoritative.
@@ -2112,4 +2116,4 @@ These groups retain the full ANALYSIS inventory without promoting deferred featu
 
 Parts 45-65 are not first-website-release prerequisites. Other page-20/21 ideas (custom day-boundary UI, full bilingual UI, richer demonstrations/timers/supersets/effort tools, new device/scale/activity imports, billing, iOS, a worker fleet, clinical/social features) are retained as explicitly deferred scope, not secretly bundled into an MVP task. If promoted, split the selected capability into fresh bounded part IDs with the same 18 fields and acceptance mapping; do not use a later research result as blanket implementation approval. No speculative frameworks/directories/services are to be scaffolded now.
 
-Current COORD-DOCS ends after source/dependency/path/field/status consistency checks and actual results in HANDOFF. It creates no approved implementation plan, application scaffold, dependencies, secrets, prompt text file, deployment or Git mutation. Stop for the owner review/setup instruction.
+COORD-DOCS is a completed historical documentation stage. AUDIT-DOCS records its review and bounded corrections in the [audit report](docs/agent/pre-implementation-audit.md) and [HANDOFF](docs/agent/HANDOFF.md), without starting any of the 82 application parts. Follow HANDOFF's actual next action; owner S0 and a separately approved/saved 0A plan still precede application implementation.

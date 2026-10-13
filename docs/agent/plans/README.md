@@ -2,6 +2,8 @@
 
 Implementation plan home: `docs/agent/plans/`. No part implementation plan is approved or created by COORD-DOCS; this index preserves the directory without fabricating one.
 
+Current approved plan: [AUDIT-DOCS revision 1](part-audit-docs-final-pre-implementation-audit.md), approved and saved on 13 October 2026 for documentation review only. Application-part plans remain unapproved. [HANDOFF](../HANDOFF.md) records execution status; the saved approved wording is not rewritten as live status changes.
+
 Use `part-<lowercase-id>-<short-slug>.md`, for example `part-0a-repository-toolchain.md` (example filename only; not an existing plan). A built-in temporary plan must still be copied here as the exact owner-approved Markdown before implementation. Link the actual saved plan from [HANDOFF](../HANDOFF.md).
 
 Each plan must record:
